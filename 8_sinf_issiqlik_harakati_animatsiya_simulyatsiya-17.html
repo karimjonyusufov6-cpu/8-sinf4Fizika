@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8-sinf fizika — Issiqlik harakati, harorat va uni o‘lchash</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef3f8;color:#172033;line-height:1.55}
+header{background:linear-gradient(135deg,#123b7a,#2563eb,#7c3aed);color:#fff;padding:28px 16px}
+.container{max-width:1100px;margin:auto;padding:18px}
+.card{background:#fff;border-radius:18px;padding:22px;margin:18px 0;box-shadow:0 5px 18px #0001}
+h1{font-size:clamp(26px,4vw,42px);margin:0 0 8px}
+h2{color:#1d4ed8;margin-top:0}
+h3{color:#334155}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.box{padding:15px;border-radius:14px;background:#edf4ff;border:1px solid #d8e5fa}
+.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:14px 0}
+.controls label{font-weight:700;min-width:260px}
+input[type=range]{width:min(520px,100%);accent-color:#2563eb}
+button{border:0;border-radius:10px;padding:11px 16px;background:#2563eb;color:white;font-weight:700;cursor:pointer}
+button.secondary{background:#64748b}
+canvas{display:block;width:100%;height:auto;background:#0f172a;border-radius:15px;border:2px solid #334155}
+.readout{font-size:1.2rem;font-weight:800}
+.formula{font-size:1.18rem;background:#111827;color:white;padding:13px;border-radius:11px;text-align:center;margin:10px 0}
+table{width:100%;border-collapse:collapse;margin:12px 0}
+th,td{border:1px solid #cbd5e1;padding:9px;text-align:left}
+th{background:#e7eefb}
+.quiz li{margin-bottom:14px}
+.answer{color:#15803d;font-weight:800}
+footer{text-align:center;color:#64748b;padding:25px}
+.small{font-size:.92rem;color:#64748b}
+@media(max-width:600px){
+ .container{padding:10px}.card{padding:16px}
+ .controls label{min-width:100%}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="container">
+<h1>Issiqlik harakati. Harorat va uni o‘lchash</h1>
+<p>8-sinf fizika • Animatsiya va interaktiv simulyatsiyalar bilan HTML5 mini-dars</p>
+</div>
+</header>
+
+<main class="container">
+
+<section class="card">
+<h2>🎯 Dars maqsadi</h2>
+<div class="grid">
+<div class="box">Issiqlik harakatini tushuntirish.</div>
+<div class="box">Harorat va kinetik energiya bog‘lanishini tushunish.</div>
+<div class="box">Termometrlar va harorat shkalalarini o‘rganish.</div>
+<div class="box">°C, K va °F o‘rtasida hisoblashni bajarish.</div>
+</div>
+</section>
+
+<section class="card">
+<h2>1. 🔬 Issiqlik harakati va molekulalar</h2>
+<p><b>Issiqlik harakati</b> — modda tarkibidagi atom va molekulalarning doimiy, tartibsiz harakatidir. Zarrachalar tinch holatda turmaydi.</p>
+
+<div class="grid">
+<div class="box"><b>❄️ Sovuq:</b><br>Zarrachalarning o‘rtacha harakati nisbatan sust.</div>
+<div class="box"><b>🌤 Iliq:</b><br>Zarrachalar o‘rtacha tezlikda harakat qiladi.</div>
+<div class="box"><b>🔥 Issiq:</b><br>Zarrachalarning o‘rtacha harakati jadal.</div>
+</div>
+
+<h3>Interaktiv simulyatsiya: Molekulalar harakati</h3>
+<div class="controls">
+<label>Harorat: <span id="temp1Value">50</span> °C<br>
+<input id="temp1" type="range" min="0" max="100" value="50"></label>
+<span id="state1" class="readout">Iliq</span>
+<span id="energy1" class="readout">O‘rtacha kinetik energiya: o‘rta</span>
+</div>
+<canvas id="canvas1" width="900" height="330"></canvas>
+<div class="controls">
+<button id="pause1">⏸ Pauza</button>
+<button id="reset1" class="secondary">↻ Qayta boshlash</button>
+</div>
+<p class="small">Slayderni chapdan o‘ngga suring. Molekulalarning harakat tezligi qanday o‘zgarayotganini kuzating.</p>
+
+<div class="box">
+<b>O‘quvchi nimani kuzatadi?</b> Harorat oshirilganda molekulalar tezroq va tartibsizroq harakat qiladi.
+<br><b>Xulosa:</b> harorat oshishi zarrachalarning o‘rtacha kinetik energiyasi ortishi bilan bog‘liq.
+</div>
+</section>
+
+<section class="card">
+<h2>2. 🌡️ Harorat va energiyaga bog‘liqligi</h2>
+<p><b>Harorat</b> — jismning issiqlik holatini tavsiflovchi fizik kattalik. Zarrachalarning tartibsiz harakati bilan bog‘liq.</p>
+
+<div class="formula">
+Harorat ↑ → molekulalar harakati ↑ → o‘rtacha kinetik energiya ↑
+</div>
+
+<p>Ideal bir atomli gaz uchun:</p>
+<div class="formula">⟨E<sub>k</sub>⟩ = 3/2 · k<sub>B</sub>T</div>
+<p class="small">Bu formulada T Kelvin shkalasidagi mutlaq harorat. 8-sinf uchun asosiy g‘oya: <b>T oshsa, o‘rtacha kinetik energiya ham oshadi.</b></p>
+
+<h3>Interaktiv simulyatsiya: Jismni qizdirish va sovitish</h3>
+<div class="controls">
+<button id="heat">🔥 +10 °C</button>
+<button id="cool" class="secondary">❄️ −10 °C</button>
+<label>Harorat: <span id="temp2Value">20</span> °C<br>
+<input id="temp2" type="range" min="0" max="100" value="20"></label>
+</div>
+<canvas id="canvas2" width="900" height="330"></canvas>
+<div class="box" id="explain2">20 °C da zarrachalar o‘rtacha tezlikda harakat qilmoqda.</div>
+</section>
+
+<section class="card">
+<h2>3. 🌡️ Haroratni o‘lchash va termometrlar</h2>
+<p><b>Termometr</b> — haroratni o‘lchash uchun ishlatiladigan asbob.</p>
+
+<table>
+<tr><th>Termometr</th><th>Ishlash prinsipi</th><th>Qo‘llanishi</th></tr>
+<tr><td>Simobli</td><td>Simob hajmining harorat bilan o‘zgarishi</td><td>Klassik/laboratoriya termometrlari</td></tr>
+<tr><td>Spirtli</td><td>Spirt hajmining o‘zgarishi</td><td>Sovuq muhitlarda</td></tr>
+<tr><td>Elektron</td><td>Datchikning elektr xossasi o‘zgarishi</td><td>Maishiy va tibbiy o‘lchash</td></tr>
+<tr><td>Infraqizil</td><td>Issiqlik nurlanishini aniqlash</td><td>Kontaktsiz o‘lchash</td></tr>
+</table>
+
+<h3>Harorat shkalalari</h3>
+<div class="grid">
+<div class="box"><b>Selsiy (°C)</b><br>0 °C — suvning muzlash nuqtasi.<br>100 °C — normal bosimda suvning qaynash nuqtasi.</div>
+<div class="box"><b>Kelvin (K)</b><br>Mutlaq harorat shkalasi.<br>0 °C = 273,15 K.</div>
+<div class="box"><b>Farengeyt (°F)</b><br>0 °C = 32 °F.<br>100 °C = 212 °F.</div>
+</div>
+
+<div class="formula">K = °C + 273,15</div>
+<div class="formula">°C = K − 273,15</div>
+<div class="formula">°F = 9/5 × °C + 32</div>
+<div class="formula">°C = 5/9 × (°F − 32)</div>
+
+<h3>Interaktiv simulyatsiya: °C → K → °F</h3>
+<div class="controls">
+<label>Selsiy: <span id="cSliderValue">20</span> °C<br>
+<input id="temp3" type="range" min="-100" max="200" value="20"></label>
+</div>
+
+<div class="grid">
+<div class="box"><h3>°C</h3><div id="cBox" class="readout">20 °C</div></div>
+<div class="box"><h3>K</h3><div id="kBox" class="readout">293,15 K</div></div>
+<div class="box"><h3>°F</h3><div id="fBox" class="readout">68 °F</div></div>
+</div>
+
+<p class="small">Masalan, 20 °C → 293,15 K → 68 °F. Slayderni o‘zgartirib, qiymatlarning bir vaqtda o‘zgarishini kuzating.</p>
+</section>
+
+<section class="card">
+<h2>🧮 Hisoblash misollari</h2>
+<ol>
+<li><b>25 °C → K:</b> K = 25 + 273,15 = <b>298,15 K</b>.</li>
+<li><b>−10 °C → K:</b> K = −10 + 273,15 = <b>263,15 K</b>.</li>
+<li><b>300 K → °C:</b> °C = 300 − 273,15 = <b>26,85 °C</b>.</li>
+<li><b>20 °C → °F:</b> °F = 9/5 × 20 + 32 = <b>68 °F</b>.</li>
+<li><b>95 °F → °C:</b> °C = 5/9 × (95 − 32) = <b>35 °C</b>.</li>
+</ol>
+</section>
+
+<section class="card quiz">
+<h2>📝 10 ta test</h2>
+<ol>
+<li>Issiqlik harakati nima?<br>A) Tinch holat B) Zarrachalarning doimiy tartibsiz harakati C) Faqat gaz harakati D) Faqat tebranish</li>
+<li>Harorat oshganda o‘rtacha kinetik energiya qanday o‘zgaradi?<br>A) Ortadi B) Kamayadi C) O‘zgarmaydi D) Nol bo‘ladi</li>
+<li>0 °C necha Kelvin?<br>A) 0 K B) 100 K C) 273,15 K D) 373,15 K</li>
+<li>20 °C necha °F?<br>A) 20 B) 52 C) 68 D) 72</li>
+<li>300 K taxminan necha °C?<br>A) −27 B) 27 C) 300 D) 573</li>
+<li>Elektron termometrda nima ishlatiladi?<br>A) Datchik B) Qum C) Simob ustuni D) Chizg‘ich</li>
+<li>Qaysi haroratda molekulalarning o‘rtacha harakati yuqoriroq?<br>A) 10 °C B) 20 °C C) 50 °C D) 0 °C</li>
+<li>100 °C necha °F?<br>A) 180 B) 200 C) 212 D) 273</li>
+<li>Qaysi formula to‘g‘ri?<br>A) K=°C−273,15 B) K=°C+273,15 C) K=°C×273,15 D) K=°C/273,15</li>
+<li>Jism qizdirilganda qaysi bog‘lanish to‘g‘ri?<br>A) T↓→harakat↑ B) T↑→harakat↑→o‘rtacha Ek↑ C) T↑→Ek↓ D) T o‘zgarmaydi</li>
+</ol>
+<p class="answer">Javoblar: 1-B, 2-A, 3-C, 4-C, 5-B, 6-A, 7-C, 8-C, 9-B, 10-B.</p>
+</section>
+
+<section class="card">
+<h2>🧪 Amaliy tajriba</h2>
+<p><b>Issiq va sovuq suvda bo‘yoqning tarqalishi.</b></p>
+<ol>
+<li>Ikki stakanga suv soling: biri sovuq, biri iliq.</li>
+<li>Har ikkisiga bir tomchidan oziq-ovqat bo‘yoqchasi qo‘shing.</li>
+<li>Bo‘yoqning tarqalishini kuzating.</li>
+<li>Qaysi stakanda tezroq tarqalganini muhokama qiling.</li>
+</ol>
+<p><b>Xavfsizlik:</b> qaynoq suvdan foydalanmang. Tajribani o‘qituvchi nazoratida bajaring.</p>
+</section>
+
+<section class="card">
+<h2>📌 Yakuniy xulosa</h2>
+<div class="formula">Harorat ↑ → Molekulalar harakati ↑ → O‘rtacha kinetik energiya ↑</div>
+<ul>
+<li>Modda zarrachalari doimo harakatda.</li>
+<li>Harorat zarrachalarning o‘rtacha kinetik harakati bilan bog‘liq.</li>
+<li>Termometr haroratni o‘lchaydi.</li>
+<li>Harorat °C, K va °F birliklarida ifodalanishi mumkin.</li>
+</ul>
+</section>
+
+</main>
+
+<footer>
+8-sinf fizika • HTML5 interaktiv dars • Qo‘shimcha dastur talab qilmaydi
+</footer>
+
+<script>
+(function(){
+"use strict";
+
+const temp1=document.getElementById("temp1");
+const temp1Value=document.getElementById("temp1Value");
+const state1=document.getElementById("state1");
+const energy1=document.getElementById("energy1");
+const canvas1=document.getElementById("canvas1");
+const ctx1=canvas1.getContext("2d");
+
+const temp2=document.getElementById("temp2");
+const temp2Value=document.getElementById("temp2Value");
+const canvas2=document.getElementById("canvas2");
+const ctx2=canvas2.getContext("2d");
+const explain2=document.getElementById("explain2");
+
+const particles1=[];
+const particles2=[];
+
+for(let i=0;i<75;i++){
+ particles1.push({
+  x:Math.random()*canvas1.width,
+  y:Math.random()*canvas1.height,
+  vx:Math.random()*2-1,
+  vy:Math.random()*2-1
+ });
+ particles2.push({
+  x:Math.random()*canvas2.width,
+  y:Math.random()*canvas2.height,
+  vx:Math.random()*2-1,
+  vy:Math.random()*2-1
+ });
+}
+
+let paused=false;
+
+function stateFor(t){
+ if(t<34)return ["❄️ Sovuq","past"];
+ if(t<67)return ["🌤 Iliq","o‘rta"];
+ return ["🔥 Issiq","yuqori"];
+}
+
+function updateInfo1(){
+ const t=Number(temp1.value);
+ temp1Value.textContent=t;
+ const s=stateFor(t);
+ state1.textContent=s[0];
+ energy1.textContent="O‘rtacha kinetik energiya: "+s[1];
+}
+
+function updateInfo2(){
+ const t=Number(temp2.value);
+ temp2Value.textContent=t;
+ if(t<34){
+  explain2.textContent="Zarrachalar nisbatan sekinroq harakat qilmoqda. O‘rtacha kinetik energiya pastroq.";
+ }else if(t<67){
+  explain2.textContent="Zarrachalar o‘rtacha tezlikda harakat qilmoqda. O‘rtacha kinetik energiya o‘rta.";
+ }else{
+  explain2.textContent="Zarrachalar jadal harakat qilmoqda. O‘rtacha kinetik energiya yuqoriroq.";
+ }
+}
+
+function drawParticles(ctx,particles,t){
+ ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
+ const speed=0.35+t/17;
+ let color="#38bdf8";
+ if(t>=34) color="#f59e0b";
+ if(t>=67) color="#ef4444";
+
+ particles.forEach(p=>{
+  if(!paused){
+   p.x+=p.vx*speed;
+   p.y+=p.vy*speed;
+  }
+  if(p.x<4||p.x>ctx.canvas.width-4)p.vx*=-1;
+  if(p.y<4||p.y>ctx.canvas.height-4)p.vy*=-1;
+  p.x=Math.max(4,Math.min(ctx.canvas.width-4,p.x));
+  p.y=Math.max(4,Math.min(ctx.canvas.height-4,p.y));
+
+  ctx.beginPath();
+  ctx.arc(p.x,p.y,4.5,0,Math.PI*2);
+  ctx.fillStyle=color;
+  ctx.fill();
+ });
+}
+
+document.getElementById("pause1").addEventListener("click",function(){
+ paused=!paused;
+ this.textContent=paused?"▶ Davom ettirish":"⏸ Pauza";
+});
+
+document.getElementById("reset1").addEventListener("click",function(){
+ temp1.value=50;
+ paused=false;
+ document.getElementById("pause1").textContent="⏸ Pauza";
+ updateInfo1();
+});
+
+temp1.addEventListener("input",updateInfo1);
+temp2.addEventListener("input",updateInfo2);
+
+document.getElementById("heat").addEventListener("click",function(){
+ temp2.value=Math.min(100,Number(temp2.value)+10);
+ updateInfo2();
+});
+
+document.getElementById("cool").addEventListener("click",function(){
+ temp2.value=Math.max(0,Number(temp2.value)-10);
+ updateInfo2();
+});
+
+const temp3=document.getElementById("temp3");
+
+function updateConversion(){
+ const c=Number(temp3.value);
+ const k=c+273.15;
+ const f=c*9/5+32;
+
+ document.getElementById("cSliderValue").textContent=c.toFixed(2);
+ document.getElementById("cBox").textContent=c.toFixed(2)+" °C";
+ document.getElementById("kBox").textContent=k.toFixed(2)+" K";
+ document.getElementById("fBox").textContent=f.toFixed(2)+" °F";
+}
+
+temp3.addEventListener("input",updateConversion);
+
+updateInfo1();
+updateInfo2();
+updateConversion();
+
+function animate(){
+ drawParticles(ctx1,particles1,Number(temp1.value));
+ drawParticles(ctx2,particles2,Number(temp2.value));
+ requestAnimationFrame(animate);
+}
+animate();
+
+})();
+</script>
+
+</body>
+</html>
